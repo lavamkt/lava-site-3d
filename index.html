@@ -84,10 +84,8 @@
   body.scroll #nav{display:flex}
   #nav.glass{background:rgba(11,10,9,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom-color:var(--border)}
   #nav svg{height:30px;width:auto;display:block}
-  #nav a.ghost{white-space:nowrap;font-family:var(--font-body);font-weight:700;font-size:.875rem;color:var(--lava-500);text-decoration:none;
-    padding:9px 16px;border-radius:999px;border:2px solid transparent;transition:color .24s}
+  #nav a.ghost{white-space:nowrap;font-family:var(--font-body);font-weight:700;font-size:.875rem;text-decoration:none;padding:10px 18px;border-radius:999px}
   #nav a.ghost::after{content:' →'}
-  #nav a.ghost:hover{color:var(--lava-flame)}
 
   /* ---- sections ---- */
   #page section{position:relative;min-height:100vh;display:flex;align-items:center;padding:0 clamp(20px,5vw,64px);box-sizing:border-box}
@@ -104,9 +102,7 @@
     background:radial-gradient(closest-side,rgba(11,10,9,.82),rgba(11,10,9,.62) 55%,rgba(11,10,9,0) 100%);filter:blur(28px);pointer-events:none}
 
   /* kicker "// label" */
-  #page .k{display:inline-flex;align-items:center;gap:.5em;margin:0 0 16px;font-family:var(--font-mono);font-weight:700;
-    font-size:.8125rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ash-400)}
-  #page .k::before{content:'//';color:var(--lava-500)}
+  #page .bn{display:block;margin:0 0 10px;font-family:var(--font-display);font-weight:700;font-size:.9rem;letter-spacing:.04em;text-transform:uppercase;color:#fff}
 
   /* titulos: Archivo 900 caixa alta, uma palavra queima */
   #page h2{margin:0 0 20px;font-family:var(--font-display);font-weight:900;font-size:clamp(2rem,3.5vw,3rem);line-height:1.1;
@@ -118,17 +114,25 @@
   #page .hero p{font-size:clamp(1.05rem,1.8vw,1.3rem);max-width:40ch;color:var(--ash-100)}
 
   /* botoes pilula */
-  #page .cta{display:inline-flex;align-items:center;gap:10px;padding:13px 26px;border-radius:999px;border:2px solid transparent;
-    font-family:var(--font-body);font-weight:700;font-size:.9375rem;line-height:1;letter-spacing:.01em;white-space:nowrap;text-decoration:none;cursor:pointer;
-    background:var(--grad-ember);color:#fff;box-shadow:var(--glow-soft);
-    transition:transform .14s var(--ease-out),filter .24s var(--ease-out),border-color .24s,color .24s}
+  /* Vidro laranja (pedido do Kewin): translucido com a rampa de lava por tras,
+     blur no que esta atras, borda clara e um fio de luz no topo. Vale para
+     todo botao da pagina, incluindo o "+" da equipe e os icones sociais. */
+  #page .cta, #nav a.ghost, #page .tile .plus, #page .ico{
+    background:linear-gradient(135deg,rgba(255,138,43,.46) 0%,rgba(239,73,28,.30) 55%,rgba(227,52,17,.38) 100%);
+    backdrop-filter:blur(14px) saturate(1.5);-webkit-backdrop-filter:blur(14px) saturate(1.5);
+    border:1px solid rgba(255,170,110,.55);color:#fff;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.30),inset 0 -1px 0 rgba(0,0,0,.25),0 10px 40px rgba(239,73,28,.22);
+    transition:transform .14s var(--ease-out),background .24s var(--ease-out),border-color .24s,box-shadow .24s}
+  #page .cta:hover, #nav a.ghost:hover, #page .tile:hover .plus, #page .ico:hover{
+    background:linear-gradient(135deg,rgba(255,138,43,.62) 0%,rgba(239,73,28,.46) 55%,rgba(227,52,17,.52) 100%);
+    border-color:rgba(255,200,150,.8);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 12px 46px rgba(239,73,28,.38)}
+  #page .cta{display:inline-flex;align-items:center;gap:10px;padding:13px 26px;border-radius:999px;
+    font-family:var(--font-body);font-weight:700;font-size:.9375rem;line-height:1;letter-spacing:.01em;white-space:nowrap;text-decoration:none;cursor:pointer}
   #page .cta::after{content:'→'}
-  #page .cta:hover{filter:brightness(1.08)}
   #page .cta:active{transform:scale(.97)}
   #page .cta.lg{padding:17px 36px;font-size:1.0625rem}
-  #page .cta.sec{background:transparent;box-shadow:none;color:var(--ash-100);border-color:var(--border-strong)}
-  #page .cta.sec::after{content:none}
-  #page .cta.sec:hover{border-color:var(--border-accent);color:var(--lava-500);filter:none}
+  #page .ico{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;text-decoration:none}
+  #page .ico svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
   #page .ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 
   /* ---- faixa de clientes (pe do hero) ---- */
@@ -136,17 +140,17 @@
     padding:18px clamp(20px,5vw,64px);background:rgba(11,10,9,.62);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--border)}
   #page .clients img{height:22px;max-width:120px;width:auto;object-fit:contain;opacity:.78;filter:brightness(1.05);transition:opacity .24s}
   #page .clients img:hover{opacity:1}
-  #page .clients .lbl{font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ash-500);margin-right:8px}
 
   /* ---- cards de solucao com a textura do site ---- */
-  #page .svc{position:relative;overflow:hidden;border:1px solid var(--border-accent);border-radius:16px;padding:40px;min-height:420px;
-    display:flex;flex-direction:column;gap:18px;background:#1a120e center/cover no-repeat;transition:transform .24s var(--ease-out),box-shadow .24s var(--ease-out)}
-  #page .svc::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,10,9,.55) 0%,rgba(11,10,9,.86) 70%);pointer-events:none}
+  #page .svc{position:relative;overflow:hidden;border-radius:16px;padding:40px;min-height:400px;display:flex;flex-direction:column;gap:18px;
+    background:linear-gradient(160deg,rgba(255,138,43,.14) 0%,rgba(239,73,28,.08) 45%,rgba(11,10,9,.38) 100%);
+    backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3);border:1px solid rgba(255,160,100,.38);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 16px 50px rgba(0,0,0,.35);transition:transform .24s var(--ease-out),box-shadow .24s var(--ease-out)}
+  #page .svc::before{content:'';position:absolute;inset:0;background:radial-gradient(80% 60% at 20% 0%,rgba(255,138,43,.16),transparent 70%);pointer-events:none}
   #page .svc>*{position:relative}
   #page .svc:hover{transform:translateY(-3px);box-shadow:var(--glow-soft)}
   #page .svc h3{margin:0;font-family:var(--font-display);font-weight:900;font-size:clamp(1.9rem,3vw,2.6rem);line-height:.98;letter-spacing:-.02em;text-transform:uppercase;color:var(--ash-100)}
   #page .svc h3 b{color:var(--lava-500);font-weight:900}
-  #page .svc .k{margin:0}
   #page .svc ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 16px}
   #page .svc ul li{display:inline-flex;align-items:center;gap:8px;font-size:.9rem;color:var(--ash-100)}
   #page .svc ul li::before{content:'//';font-family:var(--font-mono);font-weight:700;color:var(--lava-500)}
@@ -167,12 +171,15 @@
     transition:background .24s var(--ease-out),box-shadow .24s var(--ease-out),transform .24s var(--ease-out)}
   #page .tile:hover .plus, #page .tile.open .plus{background:var(--grad-ember);box-shadow:var(--glow-soft)}
   #page .tile.open .plus{transform:rotate(45deg)}
-  #page .tile .bio{position:absolute;inset:0;z-index:3;padding:22px 22px 70px;box-sizing:border-box;overflow:auto;
+  #page .tile .bio{position:absolute;inset:0;z-index:3;padding:20px 20px 66px;box-sizing:border-box;overflow:auto;
     background:rgba(11,10,9,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
     opacity:0;transform:translateY(10px);transition:opacity .3s var(--ease-out),transform .3s var(--ease-out);pointer-events:none}
   #page .tile.open .bio{opacity:1;transform:none;pointer-events:auto}
-  #page .tile .bio p{font-size:.875rem;line-height:1.55;color:var(--ash-100);margin:0}
-  #page .tile .bio .k{margin-bottom:10px;font-size:.6875rem}
+  #page .tile .bio p{font-size:.8125rem;line-height:1.5;color:var(--ash-100);margin:0 0 12px}
+  /* a regra do retrato (#page .tile img) e absoluta e cobre o tile inteiro;
+     a faixa de marcas precisa voltar ao fluxo, senao cai em cima do texto */
+  #page .tile .bio img.brands{position:static;inset:auto;display:block;width:100%;max-width:300px;height:auto;object-fit:contain;opacity:.92;margin-top:4px;transform:none}
+  #page .tile:hover .bio img.brands{transform:none}
 
   /* ---- big numbers: gradiente de lava no texto, traco laranja do site atras ---- */
   #page .stats{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(32px,7vw,110px);padding:26px 0 10px}
@@ -188,26 +195,35 @@
   /* ---- metodo: etapas ancoradas no vulcao 3D ---- */
   #page .steps{list-style:none;margin:18px 0 0;padding:0;display:none;gap:10px}
   #page .steps li{display:flex;align-items:center;gap:12px;font-family:var(--font-display);font-weight:700;font-size:.95rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ash-100)}
-  #page .steps li i{width:10px;height:10px;border-radius:50%;background:var(--lava-500);box-shadow:0 0 12px rgba(239,73,28,.8);flex:none}
+  #page .steps li i{display:block;width:10px;height:10px;border-radius:50%;background:var(--lava-500);box-shadow:0 0 12px rgba(239,73,28,.8);flex:0 0 10px}
   #page .steps li.top{color:var(--lava-500)}
   #metodo{position:fixed;inset:0;z-index:6;pointer-events:none;opacity:0;transition:opacity .5s var(--ease-out)}
   #metodo.show{opacity:1}
   #metodo svg{position:absolute;inset:0;width:100%;height:100%}
   #metodo .lbl{position:absolute;transform:translate(14px,-50%);white-space:nowrap;font-family:var(--font-display);font-weight:700;font-size:clamp(.8rem,1.3vw,1.1rem);
-    letter-spacing:.08em;text-transform:uppercase;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.9),0 0 3px rgba(0,0,0,.9)}
+    letter-spacing:.08em;text-transform:uppercase;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.9),0 0 3px rgba(0,0,0,.9);pointer-events:auto;cursor:default}
+  #metodo .lbl .tip{position:absolute;left:0;top:calc(100% + 10px);width:250px;white-space:normal;text-transform:none;letter-spacing:0;
+    font-family:var(--font-body);font-weight:400;font-size:.8125rem;line-height:1.5;color:var(--ash-100);text-shadow:none;
+    padding:12px 14px;border-radius:12px;background:rgba(11,10,9,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border:1px solid rgba(255,160,100,.35);box-shadow:0 10px 40px rgba(0,0,0,.5);
+    opacity:0;transform:translateY(6px);transition:opacity .22s var(--ease-out),transform .22s var(--ease-out);pointer-events:none}
+  #metodo .lbl.flip .tip{left:auto;right:0}
+  #metodo .lbl:hover .tip, #metodo .lbl.on .tip{opacity:1;transform:none}
+  #metodo .lbl:hover::before, #metodo .lbl.on::before{box-shadow:0 0 0 6px rgba(239,73,28,.28),0 0 18px rgba(239,73,28,1)}
   #metodo .lbl.top{color:var(--lava-500)}
   #metodo .lbl.flip{transform:translate(calc(-100% - 14px),-50%)}
   #metodo .lbl.flip::before{left:auto;right:-19px}
   #metodo .lbl::before{content:'';position:absolute;left:-19px;top:50%;width:10px;height:10px;border-radius:50%;background:var(--lava-500);transform:translateY(-50%);box-shadow:0 0 12px rgba(239,73,28,.9)}
 
   /* ---- depoimentos: balao laranja com bico ---- */
-  #page .quotes{display:grid;grid-template-columns:1fr 1fr;gap:28px 24px;align-items:start}
-  #page figure{margin:0;max-width:480px}
+  #page .quotes{display:grid;grid-template-columns:1fr 1fr;gap:28px 24px;align-items:start;justify-items:center;text-align:left}
+  #page .card.quotesCard{max-width:920px}
+  #page figure{margin:0;max-width:430px}
   #page figure .bub{position:relative;background:var(--grad-ember);color:#fff;border-radius:16px;padding:26px;box-shadow:var(--glow-soft)}
   #page figure .bub::before{content:'\201C';position:absolute;right:18px;top:2px;font-family:var(--font-display);font-weight:900;font-size:4rem;line-height:1;color:rgba(255,255,255,.28)}
   #page figure blockquote{margin:0;font-size:.95rem;line-height:1.6;color:rgba(255,255,255,.96)}
   #page figure .bub::after{content:'';position:absolute;left:32px;bottom:-11px;border-left:12px solid transparent;border-right:12px solid transparent;border-top:12px solid var(--lava-600)}
-  #page figcaption{margin:20px 0 0 12px;display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:.875rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ash-100)}
+  #page figcaption{margin:20px 0 0 12px;display:flex;align-items:center;justify-content:flex-start;gap:10px;text-align:left;font-family:var(--font-display);font-weight:700;font-size:.875rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ash-100)}
   #page figcaption .av{width:36px;height:36px;border-radius:50%;background:var(--ash-750);border:1px solid var(--border-strong);display:inline-flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--lava-500)}
   #page figcaption span{color:var(--ash-500);font-weight:500}
   #page .logos-sm{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;margin-top:26px;opacity:.7}
@@ -223,16 +239,14 @@
   #page textarea{min-height:110px;resize:vertical}
   #page form .ctas{margin-top:6px;align-items:center}
   #page .social{display:flex;gap:10px;margin-top:18px}
+  #page section.right .card{text-align:left}
 
-  #scrollBack{display:none;font-family:"Space Mono",ui-monospace,monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8A7A72;text-decoration:none;margin-left:18px}
-  body.scroll #scrollBack{display:inline}
-  #scrollBack:hover{color:#F5F1EF}
+  #scrollBack{display:none!important}
   #scrollBar{position:fixed;left:0;top:0;height:2px;width:0;background:linear-gradient(90deg,#FFB300,#FF6A1F,#EF491C,#E30E13);z-index:21;display:none}
   body.scroll #scrollBar{display:block}
   @media (max-width:820px){
     #page section{align-items:flex-start;padding-top:104px;padding-bottom:48px}
     #page section.right, #page section.center{justify-content:flex-start;text-align:left}
-    #scrollBack{display:none!important}
     #nav{padding:14px 18px}
     #nav svg{height:26px}
     #nav a.ghost{font-size:.8rem;padding:8px 10px}
@@ -471,7 +485,7 @@
 <div id="page"></div>
 <div id="nav"></div>
 <div id="metodo"></div>
-<a id="scrollBack" href="?editor">Voltar ao editor</a>
+<a id="scrollBack" href="?editor" hidden>Voltar ao editor</a>
 <div id="scrollBar"></div>
 
 <div id="hud">
@@ -3473,6 +3487,16 @@ const CLIENT_LOGOS = [
 ];
 const logosHtml = cls => '<div class="' + cls + '">' +
   CLIENT_LOGOS.map(([f, n]) => '<img src="' + SITE + 'logo-' + f + '.webp" alt="' + n + '" loading="lazy">').join('') + '</div>';
+const ICON_IG = '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="#fff"/></svg>';
+const ICON_IN = '<svg viewBox="0 0 24 24"><path d="M4.5 9.5v10"/><circle cx="4.5" cy="5" r="1.4"/><path d="M10 9.5v10M10 13.5c0-2.2 1.6-4 3.8-4s3.7 1.6 3.7 4v6"/></svg>';
+/* Textos dos passos do metodo (ESCRITOS AQUI, nao vieram do site: o Kewin
+   revisa). Aparecem no hover dos pontos ancorados no vulcao. */
+const METHOD_TIPS = {
+  'Diagnóstico':    'A gente mergulha no seu negócio, no mercado e na concorrência para entender onde está o calor e onde está o gelo.',
+  'Planejamento':   'Com o diagnóstico na mão, definimos posicionamento, canais, metas e o caminho até elas.',
+  'Execução':       'Marca, conteúdo, tráfego e tecnologia rodando juntos, com medição em cada etapa.',
+  'Topo do vulcão': 'Resultado: um negócio em erupção, com crescimento sustentado e a concorrência derretendo.'
+};
 
 const LOGO_SVG = '<svg viewBox="34 44 824 222" aria-label="Lava Marketing" role="img">' +
   '<path fill="#E63411" d="M124.65,61.16c-1.75,25.25,10.78,49.35,32.46,62.42l103.29,62.25c7.91,4.77,17.99-.93,17.99-10.16v-102.43c0-15.15-12.28-27.43-27.43-27.43h-109.84c-8.67,0-15.86,6.71-16.46,15.36h0Z"/>' +
@@ -3493,7 +3517,8 @@ const TEAM = [
 const teamHtml = () => '<div class="cols three">' + TEAM.map(([f, n, r, bio]) =>
   '<div class="tile" tabindex="0" role="button" aria-label="Ver ' + n + '">' +
     '<img src="' + SITE + f + '.webp" alt="' + n + '" loading="lazy">' +
-    '<div class="bio"><span class="k">' + n + '</span><p>' + bio + '</p></div>' +
+    '<div class="bio"><span class="bn">' + n + '</span><p>' + bio + '</p>' +
+      '<img class="brands" src="' + SITE + 'marcas-' + f + '.webp" alt="Marcas com que ' + n.split(' ')[0] + ' já trabalhou" loading="lazy"></div>' +
     '<span class="nm">' + n + '<small>' + r + '</small></span>' +
     '<button class="plus" type="button" aria-hidden="true">+</button>' +
   '</div>').join('') + '</div>';
@@ -3503,39 +3528,39 @@ const SCROLL_COPY = {
     kicker: 'Marketing quente', hero: true, align: 'left',
     title: 'Marketing<br><b>quente</b>',
     html: '<p>É a escolha das empresas que se destacam.</p>' +
-          '<div class="ctas"><a class="cta lg" href="https://lavamkt.com/#contato">Quero aquecer meus resultados</a></div>',
-    extra: '<div class="clients"><span class="lbl">// Quem já esquentou com a gente</span>' +
+          '<div class="ctas"><a class="cta lg" href="#contato">Quero aquecer meus resultados</a></div>',
+    extra: '<div class="clients">' +
            CLIENT_LOGOS.map(([f, n]) => '<img src="' + SITE + 'logo-' + f + '.webp" alt="' + n + '">').join('') + '</div>'
   },
   'soluções': {
     kicker: 'Soluções', wide: true, align: 'left',
     title: 'Soluções estratégicas para <b>escalar</b> seu negócio',
     html: '<div class="cols">' +
-      '<article class="svc" style="background-image:url(' + SITE + 'card-marcas.webp)"><span class="k">Consultoria</span><h3>Marcas<br><b>quentes</b></h3>' +
+      '<article class="svc"><h3>Marcas<br><b>quentes</b></h3>' +
         '<p>Planejamento e Posicionamento</p>' +
         '<ul><li>Análise de Mercado</li><li>Diagnóstico de Marca</li><li>Posicionamento de Marca</li>' +
         '<li>Planejamento estratégico</li><li>Treinamento de Equipes</li><li>Consultoria Individual</li></ul>' +
-        '<div class="ctas"><a class="cta" href="https://lavamkt.com/#contato">quero uma proposta de consultoria</a></div></article>' +
-      '<article class="svc" style="background-image:url(' + SITE + 'card-360.webp)"><span class="k">Marketing 360</span><h3>Negócios em<br><b>erupção</b></h3>' +
+        '<div class="ctas"><a class="cta" href="#contato">quero uma proposta de consultoria</a></div></article>' +
+      '<article class="svc"><h3>Negócios em<br><b>erupção</b></h3>' +
         '<p>Marketing Estratégico e Performance</p>' +
         '<ul><li>Branding</li><li>Presença Digital</li><li>Tráfego Pago</li>' +
         '<li>Gestão de Marca</li><li>Planejamento de Marketing</li><li>Soluções em IA</li></ul>' +
-        '<div class="ctas"><a class="cta" href="https://lavamkt.com/#contato">quero uma proposta de marketing 360</a></div></article>' +
+        '<div class="ctas"><a class="cta" href="#contato">quero uma proposta de marketing 360</a></div></article>' +
       '</div>'
   },
   'equipe': {
     kicker: 'Equipe', wide: true, align: 'left',
     title: 'As mentes por trás da <b>Lava</b>',
     html: teamHtml() +
-          '<div class="ctas"><a class="cta" href="https://lavamkt.com/#contato">Quero falar com um especialista</a></div>'
+          '<div class="ctas"><a class="cta" href="#contato">Quero falar com um especialista</a></div>'
   },
   'big numbers': {
     kicker: 'Resultados', wide: true, align: 'center',
     title: 'Resultados que <b>fervem</b>',
     html: '<div class="stats">' +
-          '<div class="stat"><b>+300%</b><span>Aumento de faturamento em dois anos</span></div>' +
-          '<div class="stat"><b>+10 mil</b><span>Leads gerados por ano</span></div>' +
-          '</div><div class="ctas"><a class="cta" href="https://lavamkt.com/#contato">Quero transformar meus resultados</a></div>'
+          '<div class="stat"><b data-to="300" data-pre="+" data-suf="%">+0%</b><span>Aumento de faturamento em dois anos</span></div>' +
+          '<div class="stat"><b data-to="10" data-pre="+" data-suf=" mil">+0 mil</b><span>Leads gerados por ano</span></div>' +
+          '</div><div class="ctas"><a class="cta" href="#contato">Quero transformar meus resultados</a></div>'
   },
   'metodo': {
     kicker: 'Método', align: 'left',
@@ -3543,10 +3568,10 @@ const SCROLL_COPY = {
     html: '<p>O Método Lava é um processo próprio, estruturado em três etapas: Diagnóstico, Planejamento e Execução.</p>' +
           '<p>Ele existe porque crescimento não acontece magicamente, mas sim através de análise, direção e ação coordenada. É assim que as coisas são feitas na Lava.</p>' +
           '<ol class="steps"><li><i></i>Diagnóstico</li><li><i></i>Planejamento</li><li><i></i>Execução</li><li class="top"><i></i>Topo do vulcão</li></ol>' +
-          '<div class="ctas"><a class="cta" href="https://lavamkt.com/#contato">quero uma estratégia de marketing</a></div>'
+          '<div class="ctas"><a class="cta" href="#contato">quero uma estratégia de marketing</a></div>'
   },
   'depoimentos': {
-    kicker: 'Depoimentos', wide: true, align: 'left',
+    kicker: 'Depoimentos', wide: true, align: 'center', cls: 'quotesCard',
     title: 'Resultados construídos com <b>método</b> e execução',
     html: '<div class="quotes">' +
           '<figure><div class="bub"><blockquote>Trabalhar com a Lava foi enriquecedor. Eles se aprofundaram na arquitetura para entender meu escritório e o mercado, com cuidado e organização em cada etapa. O material entregue foi impecável e cheio de identidade. Foi um processo leve, colaborativo e muito inspirador.</blockquote></div>' +
@@ -3556,15 +3581,15 @@ const SCROLL_COPY = {
           '</div>' + logosHtml('logos-sm')
   },
   'contato': {
-    kicker: 'Contato', align: 'left',
+    kicker: 'Contato', align: 'right',
     title: 'Comece a <b>aquecer</b> os seus resultados',
     html: '<p>Dê o próximo passo no marketing do seu negócio. Preencha o formulário e veja como podemos estruturar, planejar e executar as ações da sua empresa.</p>' +
           '<form id="ctForm"><div class="two"><input type="text" name="nome" placeholder="Seu nome" required><input type="email" name="email" placeholder="Seu e-mail" required></div>' +
           '<input type="text" name="empresa" placeholder="Empresa">' +
           '<textarea name="msg" placeholder="Conta pra gente o que você precisa"></textarea>' +
           '<div class="ctas"><button class="cta lg" type="submit">quero conversar</button></div></form>' +
-          '<div class="social"><a class="cta sec" href="https://www.instagram.com/lavamkt/" target="_blank" rel="noopener">Instagram</a>' +
-          '<a class="cta sec" href="https://www.linkedin.com/company/lavamkt/" target="_blank" rel="noopener">Linkedin</a></div>'
+          '<div class="social"><a class="ico" href="https://www.instagram.com/lavamkt/" target="_blank" rel="noopener" aria-label="Instagram">' + ICON_IG + '</a>' +
+          '<a class="ico" href="https://www.linkedin.com/company/lavamkt/" target="_blank" rel="noopener" aria-label="LinkedIn">' + ICON_IN + '</a></div>'
   }
 };
 
@@ -3606,9 +3631,9 @@ if (SCROLL_MODE){
     sec.dataset.key = key;
     if (c.align === 'right') sec.classList.add('right');
     if (c.align === 'center') sec.classList.add('center');
+    if (key === 'contato') sec.id = 'contato';
     sec.innerHTML =
-      '<div class="card' + (c.wide ? ' wide' : '') + (c.hero ? ' hero' : '') + '">' +
-        '<span class="k">' + escapeHtml(c.kicker || ck.name) + '</span>' +
+      '<div class="card' + (c.wide ? ' wide' : '') + (c.hero ? ' hero' : '') + (c.cls ? ' ' + c.cls : '') + '">' +
         (c.title ? '<h2>' + c.title + '</h2>' : '') +
         c.html +
       '</div>' + (c.extra || '');
@@ -3618,9 +3643,29 @@ if (SCROLL_MODE){
 
   // nav fixa: logo + CTA fantasma; vira vidro depois que a pagina rola
   $('nav').innerHTML = '<span style="display:flex;align-items:center">' + LOGO_SVG + '</span>' +
-    '<a class="ghost" href="https://lavamkt.com/#contato">Quero conversar</a>';
-  $('nav').firstChild.appendChild($('scrollBack'));
+    '<a class="ghost" href="#contato">Quero conversar</a>';
   if (new URLSearchParams(location.search).has('hud')) document.body.classList.add('hud');
+  // todo botao leva ao formulario: rolagem suave ate a ultima section, a camera segue
+  document.querySelectorAll('#nav a[href="#contato"], #page a[href="#contato"]').forEach(a => {
+    a.addEventListener('click', e => { e.preventDefault(); $('contato').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+  });
+
+  /* ---- big numbers: contagem quando a section entra ---- */
+  let counted = false;
+  const easeOutCubic = x => 1 - Math.pow(1 - x, 3);
+  const countUp = () => {
+    if (counted) return; counted = true;
+    page.querySelectorAll('.stat b[data-to]').forEach(el => {
+      const to = parseFloat(el.dataset.to), pre = el.dataset.pre || '', suf = el.dataset.suf || '';
+      const t0 = performance.now(), dur = 1700;
+      const tick = now => {
+        const k = easeOutCubic(Math.min(1, (now - t0) / dur));
+        el.textContent = pre + Math.round(to * k) + suf;
+        if (k < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  };
 
   // equipe: o "+" abre a bio (TeamCard do DS)
   page.querySelectorAll('.tile').forEach(t => {
@@ -3654,9 +3699,16 @@ if (SCROLL_MODE){
     });
     const box = $('metodo');
     box.innerHTML = '<svg><polyline fill="none" stroke="rgba(245,241,239,.75)" stroke-width="1.5" stroke-linejoin="round"/></svg>' +
-      mPts.map(pt => '<span class="lbl' + (pt.top ? ' top' : '') + '">' + pt.n + '</span>').join('');
+      mPts.map(pt => '<span class="lbl' + (pt.top ? ' top' : '') + '">' + pt.n +
+        '<span class="tip">' + escapeHtml(METHOD_TIPS[pt.n] || '') + '</span></span>').join('');
     mLine = box.querySelector('polyline');
     mEls = [...box.querySelectorAll('.lbl')];
+    // no toque nao existe hover: o toque alterna o balao
+    mEls.forEach(el => el.addEventListener('click', () => {
+      const on = el.classList.contains('on');
+      mEls.forEach(o => o.classList.remove('on'));
+      if (!on) el.classList.add('on');
+    }));
   }
   const mTmp = new THREE.Vector3();
   const updateMethod = () => {
@@ -3684,7 +3736,7 @@ if (SCROLL_MODE){
   applyScene(pts[0].scene);
 
   // progresso alvo vem do scroll; o exibido persegue
-  let target = 0, shown = 0;
+  let target = 0, shown = 0, apex = false;
   const readScroll = () => {
     const max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
     target = Math.min(1, Math.max(0, scrollY / max)) * (N - 1);
@@ -3695,6 +3747,18 @@ if (SCROLL_MODE){
       const r = sec.getBoundingClientRect();
       sec.classList.toggle('in', r.top < innerHeight * 0.62 && r.bottom > innerHeight * 0.38);
     });
+    const st = secs.find(x => x.dataset.key === 'big numbers');
+    if (st && st.classList.contains('in')) countUp();
+    /* Apice: na section de contato a erupcao vai ao maximo e fica la, e o
+       tremor de camera liga. Fora dela tudo volta ao normal (o tremor e
+       desligado por padrao no projeto, por pedido do Kewin). */
+    const ct = $('contato');
+    const apexNow = !!(ct && ct.classList.contains('in'));
+    if (apexNow !== apex){
+      apex = apexNow;
+      P.shake = apex;
+      if (apex) fireEruption(); else eruptTarget = 0;
+    }
   };
   addEventListener('scroll', readScroll, { passive: true });
   addEventListener('resize', readScroll);
@@ -3722,6 +3786,7 @@ if (SCROLL_MODE){
   const vA = new THREE.Vector3(), vB = new THREE.Vector3();
   const lastScene = {};
   scrollStep = dt => {
+    if (apex) eruptTarget = 1;          // segura no maximo enquanto estiver no contato
     if (snapOnce){ shown = target; snapOnce = false; }
     shown += (target - shown) * Math.min(1, dt * 5.0);
     const i = Math.min(N - 2, Math.floor(shown));
